@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Your private playground for data structures and algorithms. Edit values, step through operations, and see the code come to life.">
+<title>DSA Studio · Learn by seeing</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="tailwind.css"><link rel="stylesheet" href="styles.css">
+<script defer src="vendor/gsap.min.js"></script><script defer src="vendor/d3.min.js"></script><script type="module" src="app.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<a class="brand" href="#bubble" aria-label="DSA Studio home"><span class="brand-icon">d<span>↗</span></span><span>DSA<span class="brand-light">studio</span><small>LEARN BY SEEING</small></span></a>
+<div class="workspace-badge"><span class="workspace-avatar">BD</span><div>Bajrang’s workspace<small>Personal learning space</small></div><span class="workspace-dot"></span></div>
+<nav id="navigation" aria-label="Visualizations"></nav>
+<div class="sidebar-bottom"><span class="tiny-lock">◈</span><div>Your private playground<small>Explore. Experiment. Understand.</small></div></div>
+</aside>
+<div class="page">
+<header class="topbar"><div class="flex items-center gap-3"><button class="icon-button mobile-menu" id="menuToggle" aria-label="Toggle navigation">☰</button><span class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb">Sorting algorithms</strong></span></div><div class="topbar-right"><span class="private-pill"><span>●</span> Private workspace</span><button class="icon-button" id="helpButton" aria-label="Keyboard shortcuts and help">?</button><span class="avatar">BD</span></div></header>
+<main>
+<div class="page-intro"><div class="eyebrow"><span></span> THE ALGORITHM PLAYGROUND</div><h1>Small steps. <span>Big understanding.</span></h1><p>Turn abstract concepts into something you can see, change, and understand.</p></div>
+<section class="topic-header"><div><div class="flex items-center gap-3"><span class="topic-icon" id="topicIcon">▥</span><h2 id="topicTitle">Bubble Sort</h2><span class="level-pill" id="topicTag">Sorting</span></div><p id="topicDescription"></p></div><button class="outline-button" id="guideButton"><span>▤</span> How it works <span>↗</span></button></section>
+<div class="metrics-grid" id="metrics"></div>
+<section class="workbench">
+<div class="visual-column">
+<div class="panel visualization-panel">
+<div class="panel-heading"><div class="flex items-center gap-2"><span class="live-dot"></span><h3>Visualization</h3></div><div class="flex items-center gap-3"><span class="item-count" id="itemCount">10 elements</span><span class="status-chip" id="statusChip">Ready</span></div></div>
+<div class="input-area" id="inputArea"></div>
+<div class="operations" id="operations"></div>
+<div class="stage-wrap"><div class="stage" id="stage" aria-label="Algorithm visualization"></div></div>
+<div class="legend"><span><i class="legend-default"></i>Unvisited</span><span><i class="legend-active"></i>Current step</span><span><i class="legend-done"></i>Completed</span><span class="stage-hint" id="stageHint">Values are shown below each bar</span></div>
+<div class="playback"><div class="playback-buttons"><button class="primary-button" id="playButton" aria-label="Start animation">▶︎ <span>Start</span></button><button class="icon-button" id="stopButton" title="Stop (S)" aria-label="Stop animation">■</button><span class="control-divider"></span><button class="icon-button" id="prevButton" title="Previous step" aria-label="Previous step">◂</button><button class="icon-button" id="stepButton" title="Next step (→)" aria-label="Next step">▸</button><button class="icon-button" id="resetButton" title="Reset (R)" aria-label="Reset visualization">↺</button></div><label class="speed-control">Speed <input id="speedInput" type="range" min="0.25" max="3" step="0.25" value="1" aria-label="Animation speed"><output id="speedLabel">1×</output></label></div>
+<div class="progress-track"><div id="progressFill"></div></div>
+<div class="step-caption"><span id="stepLabel">STEP 0 / 0</span><span id="runStats">Ready when you are</span></div>
+</div>
+<div class="panel explanation-panel"><span class="explanation-icon">✧</span><div><h3 id="stepTitle">Let’s break it down</h3><p id="stepMessage" role="status" aria-live="polite">Press Start to see the algorithm in action, or move one step at a time.</p></div></div>
+</div>
+<aside class="panel code-panel"><div class="panel-heading"><div class="flex items-center gap-2"><span class="code-symbol">&lt;/&gt;</span><h3>Under the hood</h3></div><span class="code-language">PSEUDOCODE</span></div><div class="code-file"><span></span><span id="codeFilename">bubble_sort.py</span><span class="code-live">● Live</span></div><div id="codeDisplay" class="code-display" aria-label="Dynamic algorithm pseudocode"></div><div class="code-footnote"><span>↳</span> The highlighted line follows the animation.</div><div class="insight"><span class="insight-icon">◉</span><h4>Make the connection</h4><p id="insightText"></p></div></aside>
+</section>
+<section class="learn-section" id="learnSection"><div class="section-label"><span>01 — THE IDEA</span><span>Build intuition, one operation at a time</span></div><div class="learn-grid"><div><h3 id="learnTitle"></h3><p id="learnDescription"></p></div><div class="try-card"><span class="try-icon">↗</span><div><h4>Try a little experiment</h4><p id="experimentText"></p></div></div></div></section>
+<footer><span class="footer-brand">d↗ <strong>DSA studio</strong></span><span>Built for curious minds. Made to be explored.</span><span class="footer-count">17 visualizations · Infinite possibilities</span></footer>
+</main>
+</div></div>
+<dialog id="helpDialog"><button id="closeHelp" class="icon-button dialog-close" aria-label="Close help">×</button><div class="eyebrow">A LITTLE HELP</div><h2>Your controls, explained.</h2><p>Load your own values with Apply, or generate a new example with Random. Pick an operation and watch its code update alongside the visualization.</p><div class="shortcut-row"><kbd>Space</kbd><span>Start or pause</span></div><div class="shortcut-row"><kbd>→</kbd><span>Advance one step</span></div><div class="shortcut-row"><kbd>S</kbd><span>Stop at the current state</span></div><div class="shortcut-row"><kbd>R</kbd><span>Return to the start of the current operation</span></div><p class="muted">Positions start at 0. The visualizations run in your browser. Switching topics loads a fresh example.</p></dialog>
+<div id="toast" role="alert"></div>
+</body></html>
